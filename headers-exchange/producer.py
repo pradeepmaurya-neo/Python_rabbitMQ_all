@@ -10,18 +10,18 @@ channel = connection.channel()
 
 # channel.queue_declare(queue='letterbox')
 
-channel.exchange_declare(exchange='headersxchange', exchange_type=ExchangeType.headers)
+channel.exchange_declare(exchange='headersexchange', exchange_type=ExchangeType.headers)
 
 
 
 message = "This is message gone through Headers 2"
 
-channel.basic_publish(exchange='headersxchange',
+channel.basic_publish(exchange='headersexchange',
  routing_key='',
   body = message,
   properties=pika.BasicProperties(headers={
-      'name': 'Pradeep Maurya'
-  })
+      'name': 'Pradeep'
+  }),
   )
 
 print(f"Sent message {message}")

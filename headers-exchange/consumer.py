@@ -10,7 +10,7 @@ connection = pika.BlockingConnection(connection_para)
 
 channel = connection.channel()
 
-channel.exchange_declare(exchange='headersxchange', exchange_type=ExchangeType.headers)
+channel.exchange_declare(exchange='headersexchange', exchange_type=ExchangeType.headers)
 
 channel.queue_declare(queue='letterbox')
 
@@ -22,7 +22,7 @@ bind_args = {
 
 }
 
-channel.queue_bind('letterbox', 'headersxchange', arguments=bind_args)
+channel.queue_bind('letterbox', 'headersexchange', arguments=bind_args)
 
 
 channel.basic_consume(queue='letterbox', auto_ack=True, on_message_callback=recieved_message)
